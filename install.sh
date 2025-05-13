@@ -24,17 +24,12 @@ cd $REPO_NAME-main || exit
 # the programs without whining that it was downloaded from the internetz
 sh brew/install.sh
 
-# Source the updated .zshrc file
-source ~/.zshrc
-
 # After everything is installed, tweak some system settings,
-# and install some fonts
 sh SysSettings/setup.sh
 
 # Finally, remove the temporary directory and its contents recursively    
 rm -rf "$HOME/SystemSetupTmp"    
 echo "Temporary files removed successfully."
-# echo "Restart your terminal for zsh-autosuggestions to take effect."
 
 unset GIT_USERNAME
 unset REPO_NAME

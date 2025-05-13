@@ -2,13 +2,8 @@
 # Install all GUI programs in the application folder
 cask_args appdir: "~/Applications", require_sha: true
 
-# The things needed for the installation
-
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-brew "mas"
-mas "The Unarchiver", id: 425424353
+# If you add apple store applications (mas), uncomment the next line
+# brew "mas"
 
 # Must haves
 
@@ -41,7 +36,7 @@ tap "supabase/tap"
 
 brew "oven-sh/bun/bun"
 brew "supabase/tap/supabase"
-brew "ddev/ddev/ddev"
+brew "ddev/ddev"
 brew "gh"
 brew "git-flow"
 
