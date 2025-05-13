@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to new_mac_setup 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://twitter.com/BjornarOtterlei" target="_blank">
     <img alt="Twitter: BjornarOtterlei" src="https://img.shields.io/twitter/follow/BjornarOtterlei.svg?style=social" />
   </a>
@@ -21,9 +21,7 @@ The SysSettings/setup.sh will configure system settings. Example of this is chan
 ## Install
 
 ```sh
-REPO_OWNER="GITHUB_USERNAME"
-REPO_NAME="REPO_NAME"
-curl -sSL https://raw.githubusercontent.com/"$REPO_OWNER"/"$REPO_NAME"/main/install.sh | sh -s "$REPO_OWNER" "$REPO_NAME"
+(REPO_OWNER="GITHUB_USERNAME"; REPO_NAME="REPO_NAME"; curl -sSL https://raw.githubusercontent.com/"$REPO_OWNER"/"$REPO_NAME"/main/install.sh | sh -s "$REPO_OWNER" "$REPO_NAME")
 ```
 
 ## Author
