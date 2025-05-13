@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Set default folder for storing screenshots
-# Create the directory if it doesn't exist
-mkdir -p ~/Downloads 
-# Sets it as default location for screenshots
+# Sets Downloads/ as default location for screenshots
 defaults write com.apple.screencapture location ~/Downloads
 
-# Install fonts
-# Copy fonts to the Fonts directory
-cp -a ./fonts/. ~/Library/Fonts 
+# Set dock size (integer from 16 to 128; default is usually 64)
+defaults write com.apple.dock tilesize -int 26
+
+# Set screensaver time to 5 minutes, and password req after 4 hours
+defaults -currentHost write com.apple.screensaver idleTime -int 300
+defaults write com.apple.screensaver askForPasswordDelay -int 14400
+
