@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the repository params
-export GIT_USERNAME=$1
+export REPO_OWNER=$1
 export REPO_NAME=$2
 
 # Prompt for sudo password, as it will be required for the installation
