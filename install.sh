@@ -16,8 +16,8 @@ mkdir -p "$HOME/SystemSetupTmp"
 cd "$HOME/SystemSetupTmp" || exit
 
 # Download and unzip repository, exit script if download failed
-curl -L -o master.zip https://github.com/$GIT_USERNAME/$REPO_NAME/archive/refs/heads/main.zip
-unzip -o master.zip
+curl -L -o main.zip https://github.com/$REPO_OWNER/$REPO_NAME/archive/refs/heads/main.zip
+unzip -o main.zip
 cd $REPO_NAME-main || exit
 
 # Execute the install.sh file, which calls the brewfile and allows your mac to open 
@@ -31,5 +31,5 @@ sh SysSettings/setup.sh
 rm -rf "$HOME/SystemSetupTmp"    
 echo "Temporary files removed successfully."
 
-unset GIT_USERNAME
+unset REPO_OWNER
 unset REPO_NAME

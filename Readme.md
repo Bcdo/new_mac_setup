@@ -21,7 +21,9 @@ The SysSettings/setup.sh will configure system settings. Example of this is chan
 ## Install
 
 ```sh
-(REPO_OWNER="GITHUB_USERNAME"; REPO_NAME="REPO_NAME"; curl -sSL https://raw.githubusercontent.com/"$REPO_OWNER"/"$REPO_NAME"/main/install.sh | sh -s "$REPO_OWNER" "$REPO_NAME")
+REPO_OWNER="GITHUB_USERNAME"
+REPO_NAME="REPO_NAME" 
+curl -sSL https://raw.githubusercontent.com/"$REPO_OWNER"/"$REPO_NAME"/main/install.sh | sh -s "$REPO_OWNER" "$REPO_NAME"
 ```
 
 ## Author
