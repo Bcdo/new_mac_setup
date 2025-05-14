@@ -5,6 +5,9 @@ log_step() {
   echo ""
 }
 
+# Close System Preferences to avoid it overwriting changes
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null
+osascript -e 'tell application "System Preferences" to quit' 2>/dev/null
 
 # Sets Downloads/ as default location for screenshots
 log_step "Setting default save folder for screenshots to Downloads/..."
@@ -24,18 +27,18 @@ log_step "Setting Protonmail as the defaukt mail provider..."
 open -a "Protonmail" --args -makeDefault
 
 # Enable secondary click on the right side for Magic Mouse
-log_step "Activating right click on the magic mouse...
+log_step "Activating right click on the magic mouse..."
 defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode -string "TwoButton"
 
 # Disable the keyboard shortcut of spotlight, so that when we install Raycast we can set it that keyboard shortcut.
-log_setup "Disabling keyboardshortcut for spotlight..."
+log_step "Disabling keyboardshortcut for spotlight..."
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "{enabled = 0;}"
-echo('PS: Remember to configure the shortcut inside Raycast settings, or import a backup of settings from a different computer')
+echo "PS: Remember to configure the shortcut inside Raycast settings, or import a backup of settings from a different computer"
 
 # Kill som services so they restart and the changes will show
-log_setup "Restarting services..."
+log_step "Restarting services..."
 killall Dock
 killall SystemUIServer
 killall cfprefsd
 
-log_setup "Setup complete"
+log_step "Setup complete"
