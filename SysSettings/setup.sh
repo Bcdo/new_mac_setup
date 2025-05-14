@@ -39,7 +39,7 @@ sleep 3
 # Kill som services so they restart and the changes will show
 log_step "Restarting services..."
 killall Dock
-killall SystemUIServer
+killall -9 SystemUIServer
 killall cfprefsd
 
 log_step "Setup complete"
