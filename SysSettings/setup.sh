@@ -35,6 +35,7 @@ log_step "Disabling keyboardshortcut for spotlight..."
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "{enabled = 0;}"
 echo "PS: Remember to configure the shortcut inside Raycast settings, or import a backup of settings from a different computer"
 
+sleep 3
 # Kill som services so they restart and the changes will show
 log_step "Restarting services..."
 killall Dock
