@@ -31,5 +31,8 @@ sh SysSettings/setup.sh
 rm -rf "$HOME/SystemSetupTmp"    
 echo "Temporary files removed successfully."
 
+echo -e "\033[0;32mNew setup is complete!\033[0m"
+
+
 unset REPO_OWNER
 unset REPO_NAME
