@@ -23,8 +23,8 @@ defaults write com.apple.screensaver idleTime -int 300
 defaults write com.apple.screensaver askForPasswordDelay -int 14400
 
 # Set protonmail as default mail provider
-log_step "Setting Protonmail as the defaukt mail provider..."
-open -a "Protonmail" --args -makeDefault
+log_step "Opening Proton Mail to set it as default..."
+open -a "Proton Mail"
 
 # Enable secondary click on the right side for Magic Mouse
 log_step "Activating right click on the magic mouse..."
