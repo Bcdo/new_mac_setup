@@ -47,7 +47,7 @@ cask "visual-studio-code"
 
 # Optional
 
-cask "plex"
+cask "plex-media-server"
 cask "microsoft-teams"
 cask "yacreader"
 cask "qbittorrent"
