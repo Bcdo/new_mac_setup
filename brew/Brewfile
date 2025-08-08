@@ -27,6 +27,7 @@ cask "obsidian"
 cask "cloudflare-warp"
 cask "rar"
 cask "vlc"
+cask "container"
 
 
 # Development
