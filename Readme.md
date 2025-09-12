@@ -44,17 +44,28 @@ This file will be automatically sourced by the main .zshrc configuration.
 ### Option 1: One-line Remote Installation (Recommended)
 
 ```sh
+REPO_OWNER="Bcdo"
+REPO_NAME="new_mac_setup" 
 curl -sSL https://raw.githubusercontent.com/"$REPO_OWNER"/"$REPO_NAME"/main/install.sh | sh -s "$REPO_OWNER" "$REPO_NAME"
 ```
 
-### Option 2: Local Installation (If you encounter sudo issues)
+### Option 2: Download and Run (Alternative method)
 
-If the remote installation has issues with password prompts, you can clone and run locally:
+```sh
+# Download the installer
+curl -sSL https://raw.githubusercontent.com/mrb/new_mac_setup/main/install.sh -o install.sh
+chmod +x install.sh
+./install.sh mrb new_mac_setup
+```
+
+### Option 3: Clone Repository (For customization)
+
+If you want to customize the setup before running:
 
 ```sh
 git clone https://github.com/mrb/new_mac_setup.git
 cd new_mac_setup
-chmod +x install.sh Brew/install.sh SysSettings/setup.sh SysSettings/setup_zshrc.sh
+# Edit Brewfile and settings as desired
 ./install.sh mrb new_mac_setup
 ```
 
@@ -66,7 +77,7 @@ chmod +x install.sh Brew/install.sh SysSettings/setup.sh SysSettings/setup_zshrc
 
 ### What happens during installation?
 
-1. 🔐 **Permission check** - Verifies admin access
+1. 🔐 **Permission check** - Verifies admin access (prompts for password if needed)
 2. 📁 **Temporary workspace** - Creates `~/SystemSetupTmp`
 3. 📦 **Package installation** - Installs Homebrew and all Brewfile packages
 4. ⚙️ **System configuration** - Applies macOS preferences and settings
@@ -74,6 +85,10 @@ chmod +x install.sh Brew/install.sh SysSettings/setup.sh SysSettings/setup_zshrc
 6. 🧹 **Cleanup** - Removes temporary files
 
 The entire process is color-coded and shows clear progress indicators.
+
+### 🔐 Sudo Handling
+
+The script uses advanced TTY redirection (`/dev/tty`) to properly handle password prompts even when run via `curl | sh`. You'll be prompted for your admin password once at the beginning, and the installation will proceed automatically from there.
 
 ## Author
 

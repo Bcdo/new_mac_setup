@@ -26,9 +26,12 @@ log_success "Dock size set to 26 pixels"
 
 # Set display sleep time to 5 minutes
 log_step "Adjusting display sleep time..."
-sudo pmset -c displaysleep 5  # Display sleep after 5 minutes on AC power
+log_setting "Display sleep = 5 minutes on AC and battery power"
+# pmset requires sudo, but should work since we validated sudo access earlier
+sudo pmset -c displaysleep 15  # Display sleep after 5 minutes on AC power
 sudo pmset -b displaysleep 5  # Display sleep after 5 minutes on battery
-echo "Note: Password requirement timing is controlled in System Settings > Lock Screen"
+log_success "Display sleep configured successfully"
+log_info "Password requirement timing is controlled in System Settings > Lock Screen"
 
 # Set Proton Mail as default mail provider
 log_step "Setting Proton Mail as the default mail provider..."

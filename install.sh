@@ -18,20 +18,22 @@ source ./common_functions.sh 2>/dev/null || {
 log_header "macOS System Setup Starting"
 log_step "Initializing setup environment..."
 
-# Check if we have sudo access, and inform user about upcoming password prompts
-log_progress "Checking system permissions..."
+# Check for sudo access with proper TTY handling for piped execution
+log_progress "Checking administrator privileges..."
 if sudo -n true 2>/dev/null; then
-    log_success "Sudo privileges already available"
+    log_success "Administrator privileges already available"
 else
     log_info "This installation requires administrator privileges"
-    log_info "You may be prompted for your password during the process"
-    # Test sudo access with a clear message
-    if ! sudo -p "[sudo] Please enter your password to continue macOS setup: " echo "Sudo access confirmed" >/dev/null; then
+    log_info "You will be prompted for your password"
+    
+    # Use /dev/tty to handle password input even when script is piped
+    if sudo -p "[sudo] Please enter your password to continue macOS setup: " true < /dev/tty; then
+        log_success "Administrator privileges obtained"
+    else
         log_error "Administrator privileges are required for this installation"
-        log_error "Please run this script with sudo access or as an administrator"
+        log_error "Please ensure you have admin access and try again"
         exit 1
     fi
-    log_success "Administrator privileges confirmed"
 fi
 
 # Setup a temporary folder to download the repository, exit script if filesystem is not writable
