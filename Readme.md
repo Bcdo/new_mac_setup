@@ -41,11 +41,39 @@ This file will be automatically sourced by the main .zshrc configuration.
 
 ## Install
 
+### Option 1: One-line Remote Installation (Recommended)
+
 ```sh
-REPO_OWNER="GITHUB_USERNAME"
-REPO_NAME="REPO_NAME" 
 curl -sSL https://raw.githubusercontent.com/"$REPO_OWNER"/"$REPO_NAME"/main/install.sh | sh -s "$REPO_OWNER" "$REPO_NAME"
 ```
+
+### Option 2: Local Installation (If you encounter sudo issues)
+
+If the remote installation has issues with password prompts, you can clone and run locally:
+
+```sh
+git clone https://github.com/mrb/new_mac_setup.git
+cd new_mac_setup
+chmod +x install.sh Brew/install.sh SysSettings/setup.sh SysSettings/setup_zshrc.sh
+./install.sh mrb new_mac_setup
+```
+
+### Requirements
+
+- **Administrator access**: You'll be prompted for your password during installation
+- **macOS**: Tested on macOS 10.15+ 
+- **Internet connection**: Required for downloading Homebrew and packages
+
+### What happens during installation?
+
+1. 🔐 **Permission check** - Verifies admin access
+2. 📁 **Temporary workspace** - Creates `~/SystemSetupTmp`
+3. 📦 **Package installation** - Installs Homebrew and all Brewfile packages
+4. ⚙️ **System configuration** - Applies macOS preferences and settings
+5. 🐚 **Shell setup** - Configures .zshrc with development tools
+6. 🧹 **Cleanup** - Removes temporary files
+
+The entire process is color-coded and shows clear progress indicators.
 
 ## Author
 

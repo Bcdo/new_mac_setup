@@ -18,13 +18,21 @@ source ./common_functions.sh 2>/dev/null || {
 log_header "macOS System Setup Starting"
 log_step "Initializing setup environment..."
 
-# Prompt for sudo password, as it will be required for the installation
-log_progress "Password required for installation:"
-if ! sudo -v; then    
-    log_error "Failed to obtain sudo privileges. Exiting."    
-    exit 1
+# Check if we have sudo access, and inform user about upcoming password prompts
+log_progress "Checking system permissions..."
+if sudo -n true 2>/dev/null; then
+    log_success "Sudo privileges already available"
+else
+    log_info "This installation requires administrator privileges"
+    log_info "You may be prompted for your password during the process"
+    # Test sudo access with a clear message
+    if ! sudo -p "[sudo] Please enter your password to continue macOS setup: " echo "Sudo access confirmed" >/dev/null; then
+        log_error "Administrator privileges are required for this installation"
+        log_error "Please run this script with sudo access or as an administrator"
+        exit 1
+    fi
+    log_success "Administrator privileges confirmed"
 fi
-log_success "Sudo privileges obtained"
 
 # Setup a temporary folder to download the repository, exit script if filesystem is not writable
 log_step "Setting up temporary workspace..."
