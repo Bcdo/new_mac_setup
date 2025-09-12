@@ -1,18 +1,28 @@
 #!/bin/bash
-log_step() {
-  echo ""
-  echo "🔧 $1"
-  echo ""
+
+# Source common functions for consistent styling
+source ../common_functions.sh 2>/dev/null || source ./common_functions.sh 2>/dev/null || {
+    log_step() { echo -e "\033[1;36m\n🔧 $1\033[0m\n"; }
+    log_success() { echo -e "\033[0;32m✅ $1\033[0m"; }
+    log_progress() { echo -e "\033[0;35m⏳ $1\033[0m"; }
+    log_setting() { echo -e "\033[0;36m  📝 Setting: \033[0;33m$1\033[0m"; }
+    log_info() { echo -e "\033[0;34mℹ️  $1\033[0m"; }
+    log_warning() { echo -e "\033[0;33m⚠️  $1\033[0m"; }
+    log_complete() { echo -e "\033[1;32m\n🎉 $1\033[0m\n"; }
 }
 
 
 # Sets Downloads/ as default location for screenshots
 log_step "Setting default save folder for screenshots to Downloads/..."
+log_setting "com.apple.screencapture location = ~/Downloads"
 defaults write com.apple.screencapture location ~/Downloads
+log_success "Screenshots will now save to Downloads folder"
 
 # Set dock size (integer from 16 to 128; default is usually 64)
 log_step "Adjusting dock size..."
+log_setting "com.apple.dock tilesize = 26 pixels"
 defaults write com.apple.dock tilesize -int 26
+log_success "Dock size set to 26 pixels"
 
 # Set display sleep time to 5 minutes
 log_step "Adjusting display sleep time..."
@@ -123,10 +133,13 @@ sleep 4
 osascript -e 'quit app "Firefox Developer Edition"'
 
 # Kill some services so they restart and the changes will show
-log_step "Restarting services..."
+log_step "Restarting system services to apply changes..."
+log_progress "Restarting Dock, Finder, and system UI components..."
 killall Dock
 killall Finder
 killall SystemUIServer
 killall cfprefsd
+log_complete "System Settings Configuration Complete!"
+log_success "All macOS preferences have been configured"
 
-log_step "Setup complete"
+
