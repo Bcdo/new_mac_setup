@@ -22,10 +22,13 @@ cd $REPO_NAME-main || exit
 
 # Execute the install.sh file, which calls the brewfile and allows your mac to open 
 # the programs without whining that it was downloaded from the internetz
-sh brew/install.sh
+sh Brew/install.sh
 
 # After everything is installed, tweak some system settings,
 sh SysSettings/setup.sh
+
+# Setup .zshrc configuration with useful aliases and functions
+sh SysSettings/setup_zshrc.sh
 
 # Finally, remove the temporary directory and its contents recursively    
 rm -rf "$HOME/SystemSetupTmp"    

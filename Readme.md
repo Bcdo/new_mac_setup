@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to new_mac_setup 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-2.1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://twitter.com/BjornarOtterlei" target="_blank">
     <img alt="Twitter: BjornarOtterlei" src="https://img.shields.io/twitter/follow/BjornarOtterlei.svg?style=social" />
   </a>
@@ -12,11 +12,33 @@
 
 This is an automated setup for a new mac or a fresh install of mac. It is forked from the [Init-blog](https://github.com/Init-blog/BasicSystemSetup) github. You might want to fork that repo instead of this.
 
-When running the install command, it will download the repo into a temp folder, and run install.sh. The install.sh will execute two scripts, the Brew/install.sh and SysSettings/setup.sh, before deleting everything it has downloaded.
+When running the install command, it will download the repo into a temp folder, and run install.sh. The install.sh will execute three scripts, before deleting everything it has downloaded:
 
-The Brew/install.sh will install Homebrew, as well as everything defined in the Brewfile.
+1. **Brew/install.sh** - Installs Homebrew and all packages defined in the Brewfile
+2. **SysSettings/setup.sh** - Configures system settings (e.g., screenshot save location, dock size, etc.)
+3. **SysSettings/setup_zshrc.sh** - Sets up a comprehensive .zshrc with useful aliases, functions, and development shortcuts
 
-The SysSettings/setup.sh will configure system settings. Example of this is changing the default saving path for screenshots to the _Downloads_ folder instead of _Desktop_
+## Shell Configuration
+
+The setup includes a comprehensive .zshrc configuration with:
+- 60+ useful aliases for development, git, system management
+- Handy functions like `mkcd`, `extract`, `project`, `weather`
+- Enhanced history, auto-completion, and git-aware prompt
+- Tool integrations for Docker, Python, Node.js, and more
+- Universal package manager (`ni`) for seamless npm/yarn/pnpm/bun usage
+
+### Personal Customizations
+
+Your existing .zshrc will be backed up to `.zshrc.backup`. For personal customizations that won't be overwritten by future runs, create a `~/.zshrc.local` file:
+
+```bash
+# ~/.zshrc.local - Your personal customizations
+alias myalias="my command"
+export MY_VAR="my value"
+# Add your custom functions, aliases, etc.
+```
+
+This file will be automatically sourced by the main .zshrc configuration.
 
 ## Install
 

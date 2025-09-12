@@ -40,7 +40,6 @@ brew "ddev/ddev"
 brew "gh"
 brew "git-flow"
 
-cask "orbstack"
 cask "pycharm"
 cask "visual-studio-code"
 
@@ -56,5 +55,3 @@ cask "calibre"
 cask "grammarly-desktop"
 cask "sidequest"
 cask "whimsical"
-cask "vivaldi"
-
