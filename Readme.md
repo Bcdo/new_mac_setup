@@ -22,10 +22,9 @@ When running the install command, it will download the repo into a temp folder, 
 
 The setup includes a comprehensive .zshrc configuration with:
 - 60+ useful aliases for development, git, system management
-- Handy functions like `mkcd`, `extract`, `project`, `weather`
-- Enhanced history, auto-completion, and git-aware prompt
-- Tool integrations for Docker, Python, Node.js, and more
-- Universal package manager (`ni`) for seamless npm/yarn/pnpm/bun usage
+- Handy functions like `mkcd`, `extract`, `project`, `cdm`
+- Enhanced history and git-aware prompt
+- Universal package manager (`ni`) for seamless npm/yarn/pnpm/bun usage [Check out Antfu's ni](https://github.com/antfu-collective/ni)
 
 ### Personal Customizations
 
