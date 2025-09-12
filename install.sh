@@ -13,28 +13,15 @@ source ./common_functions.sh 2>/dev/null || {
     log_error() { echo -e "\033[0;31m❌ $1\033[0m"; }
     log_complete() { echo -e "\033[1;32m\n🎉 $1\033[0m\n"; }
     log_progress() { echo -e "\033[0;35m⏳ $1\033[0m"; }
+    log_info() { echo -e "\033[0;33m💡 $1\033[0m"; }
 }
 
 log_header "macOS System Setup Starting"
 log_step "Initializing setup environment..."
 
-# Check for sudo access with proper TTY handling for piped execution
-log_progress "Checking administrator privileges..."
-if sudo -n true 2>/dev/null; then
-    log_success "Administrator privileges already available"
-else
-    log_info "This installation requires administrator privileges"
-    log_info "You will be prompted for your password"
-    
-    # Use /dev/tty to handle password input even when script is piped
-    if sudo -p "[sudo] Please enter your password to continue macOS setup: " true < /dev/tty; then
-        log_success "Administrator privileges obtained"
-    else
-        log_error "Administrator privileges are required for this installation"
-        log_error "Please ensure you have admin access and try again"
-        exit 1
-    fi
-fi
+# Inform user about sudo requirements - let individual commands prompt as needed
+log_info "This installation requires administrator privileges"
+log_info "You may be prompted for your password during the installation process"
 
 # Setup a temporary folder to download the repository, exit script if filesystem is not writable
 log_step "Setting up temporary workspace..."
